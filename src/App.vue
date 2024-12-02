@@ -18,6 +18,8 @@
       class="fixed cursor-pointer transform-gpu will-change-transform"
       style="pointer-events: none;"
       @mousemove="moveSanta"
+      @touchstart="moveSanta"
+      @touchmove="moveSanta"
       @click="playHoHoHo"
     >
       <gift-sack></gift-sack>

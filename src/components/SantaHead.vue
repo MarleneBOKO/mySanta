@@ -1,7 +1,7 @@
 <template>
     <div class="absolute -top-24 left-1/2 transform -translate-x-1/2">
       <!-- Visage -->
-      <div class="w-32 h-32 bg-[#FFE4C4] rounded-full relative">
+      <div class="face w-32 h-32 bg-[#FFE4C4] rounded-full relative">
         <!-- Yeux -->
         <div class="absolute top-12 left-8 w-4 h-4 bg-black rounded-full"></div>
         <div class="absolute top-12 right-8 w-4 h-4 bg-black rounded-full"></div>
@@ -23,7 +23,12 @@
   
   <script setup>
   </script>
-
-<style lang="scss" scoped>
-
-</style>
+  
+  <style scoped>
+  @media only screen and (max-width: 156px) {
+    .face {
+      width: 20vw; /* Adjust for smaller screens */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  </style>

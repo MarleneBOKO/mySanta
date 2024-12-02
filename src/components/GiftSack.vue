@@ -1,7 +1,7 @@
 <template>
-    <div class="absolute -right-16 ">
+    <div class="absolute -right-16">
       <!-- Main sack -->
-      <div class="w-32 h-40 bg-red-700 rounded-b-full relative transform -rotate-12">
+      <div class="sack w-32 h-40 bg-red-700 rounded-b-full relative transform -rotate-12">
         <!-- Sack opening -->
         <div class="absolute -top-2 w-full h-8 bg-white rounded-t-lg"></div>
         
@@ -18,3 +18,12 @@
   
   <script setup>
   </script>
+  
+  <style scoped>
+  @media only screen and (max-width: 156px) {
+    .sack {
+      width: 20vw; /* Adjust for smaller screens */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  </style>
