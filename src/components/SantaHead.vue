@@ -10,7 +10,7 @@
         <div class="absolute top-16 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-red-500 rounded-full"></div>
         
         <!-- Barbe -->
-        <div class="absolute top-20 w-full h-20 bg-white rounded-b-full"></div>
+        <div class="absolute top-[90px] w-full h-20 bg-white rounded-b-full"></div>
       </div>
   
       <!-- Bonnet -->

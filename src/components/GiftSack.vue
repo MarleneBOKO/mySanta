@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute -right-16 -bottom-8">
+    <div class="absolute -right-16 ">
       <!-- Main sack -->
       <div class="w-32 h-40 bg-red-700 rounded-b-full relative transform -rotate-12">
         <!-- Sack opening -->

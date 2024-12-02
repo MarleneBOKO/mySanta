@@ -1,4 +1,4 @@
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, onMounted } from 'vue'
 import gsap from 'gsap'
 
 export function useAnimation() {
@@ -52,19 +52,29 @@ export function useAnimation() {
   }
 
   const moveSanta = (e) => {
-    if (!santa.value) return
-
-    const rect = santa.value.getBoundingClientRect()
-    
-    // Calculate target position relative to cursor
-    targetX = e.clientX - rect.width / 2
-    targetY = e.clientY - rect.height / 2
-
-    // Start animation loop if not already running
-    if (!animationFrame) {
-      updatePosition()
+    if (!santa.value) return;
+  
+    let x, y;
+  
+    // Détecte si l'événement est tactile ou une souris
+    if (e.type === 'mousemove') {
+      x = e.clientX;
+      y = e.clientY;
+    } else if (e.type === 'touchmove') {
+      const touch = e.touches[0];
+      x = touch.clientX;
+      y = touch.clientY;
     }
-  }
+  
+    const rect = santa.value.getBoundingClientRect();
+    targetX = x - rect.width / 2;
+    targetY = y - rect.height / 2;
+  
+    if (!animationFrame) {
+      updatePosition();
+    }
+  };
+  
 
   const playHoHoHo = () => {
     if (audio) {
@@ -96,9 +106,19 @@ export function useAnimation() {
   // Cleanup animation frame on component unmount
   onUnmounted(() => {
     if (animationFrame) {
-      cancelAnimationFrame(animationFrame)
+      cancelAnimationFrame(animationFrame);
     }
-  })
+    document.removeEventListener('mousemove', moveSanta);
+    document.removeEventListener('touchmove', moveSanta);
+    document.removeEventListener('click', playHoHoHo);
+  });
+  onMounted(() => {
+    initAudio();
+    document.addEventListener('mousemove', moveSanta);
+    document.addEventListener('touchmove', moveSanta);
+    document.addEventListener('click', playHoHoHo);
+  });
+    
 
   return {
     santa,
